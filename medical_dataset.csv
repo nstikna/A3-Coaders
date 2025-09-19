@@ -1,0 +1,51 @@
+id,original_text,simplified_text
+1,The patient exhibits signs of hypertension with systolic BP above 140 mmHg.,The patient has high blood pressure (above 140 mmHg).
+2,MRI scan shows multiple hyperintense lesions in the cerebral white matter.,The MRI scan shows bright spots in the brain's white matter.
+3,"Patient presents with tachycardia, heart rate measured at 120 bpm.",The patient has a fast heartbeat (120 bpm).
+4,Blood test indicates elevated cholesterol levels beyond normal range.,The blood test shows high cholesterol.
+5,Diagnosis: Acute bronchitis with inflammation in the bronchi.,The patient has acute bronchitis (swelling of the airways).
+6,Ultrasound indicates presence of gallstones in the gallbladder.,The ultrasound shows gallstones in the gallbladder.
+7,CT scan reveals pulmonary embolism in the left lung.,The CT scan shows a blood clot in the left lung.
+8,Patient diagnosed with type 2 diabetes mellitus.,The patient has type 2 diabetes.
+9,Chest X-ray demonstrates consolidation in the right lower lobe.,The chest X-ray shows infection in the right lung.
+10,Endoscopy shows gastric ulcer in the stomach lining.,The camera test shows a stomach ulcer.
+11,"CBC shows leukocytosis with WBC count above 12,000/µL.",The blood test shows high white blood cells.
+12,Echocardiogram indicates left ventricular hypertrophy.,The heart ultrasound shows thickening of the left heart chamber.
+13,Diagnosis: Osteoarthritis in the knee joint.,The patient has knee arthritis.
+14,Patient complains of chronic migraine headaches.,The patient has frequent migraine headaches.
+15,Skin biopsy reveals basal cell carcinoma.,The skin test shows a type of skin cancer.
+16,Pulmonary function test shows reduced FEV1 indicating COPD.,The lung test shows COPD (chronic lung disease).
+17,Kidney function test indicates elevated creatinine levels.,The blood test shows reduced kidney function.
+18,Diagnosis: Rheumatoid arthritis affecting multiple joints.,The patient has rheumatoid arthritis (joint disease).
+19,Ultrasound indicates fatty liver changes.,The ultrasound shows fatty liver.
+20,EEG reveals abnormal brain wave activity in the temporal lobe.,The brain test shows unusual activity in the temporal lobe.
+21,Colonoscopy shows multiple polyps in the large intestine.,The colon test shows small growths in the intestine.
+22,Diagnosis: Major depressive disorder.,The patient has depression.
+23,Thyroid function test indicates hypothyroidism.,The blood test shows low thyroid function.
+24,PET scan shows abnormal uptake in the lymph nodes.,The PET scan shows possible cancer in the lymph nodes.
+25,MRI indicates herniated disc in the lumbar spine.,The MRI shows a slipped disc in the lower back.
+26,Diagnosis: Acute appendicitis confirmed by CT scan.,The patient has appendicitis (inflamed appendix).
+27,Spirometry shows restrictive lung disease pattern.,The lung test shows restricted breathing.
+28,Patient presents with severe dehydration due to gastroenteritis.,The patient is dehydrated from stomach infection.
+29,Ultrasound shows renal cysts in both kidneys.,The ultrasound shows kidney cysts.
+30,Diagnosis: Anemia with hemoglobin level 8 g/dL.,"The patient has anemia (low hemoglobin, 8 g/dL)."
+31,ECG indicates atrial fibrillation with irregular rhythm.,The ECG shows irregular heartbeat (atrial fibrillation).
+32,"Skin examination reveals eczema with dry, itchy patches.",The patient has eczema (skin condition with itching).
+33,Patient diagnosed with generalized anxiety disorder.,The patient has anxiety disorder.
+34,Blood culture shows bacterial infection in the bloodstream.,The blood test shows infection in the blood.
+35,CT scan reveals stroke in the right cerebral hemisphere.,The CT scan shows a stroke on the right side of the brain.
+36,Diagnosis: Pneumonia with fever and productive cough.,The patient has pneumonia (lung infection).
+37,Patient reports chronic lower back pain for 6 months.,The patient has long-term back pain.
+38,Gastroscopy reveals esophageal varices.,The stomach test shows swollen veins in the food pipe.
+39,Diagnosis: Parkinson’s disease confirmed clinically.,The patient has Parkinson’s disease.
+40,Urine test indicates urinary tract infection with E. coli.,The urine test shows UTI caused by bacteria.
+41,Patient diagnosed with hypertension stage 2.,The patient has stage 2 high blood pressure.
+42,CT chest shows lung nodules requiring biopsy.,The CT scan shows small spots in the lung that need testing.
+43,Diagnosis: Alzheimer’s disease with memory decline.,The patient has Alzheimer’s disease (memory loss).
+44,Patient presents with seasonal allergic rhinitis.,The patient has seasonal allergies (hay fever).
+45,X-ray indicates osteopenia with reduced bone density.,The X-ray shows weak bones (osteopenia).
+46,Blood test shows vitamin D deficiency.,The patient has low vitamin D levels.
+47,Patient complains of chronic insomnia for over a year.,The patient has trouble sleeping (insomnia).
+48,Blood glucose level measured at 250 mg/dL indicates hyperglycemia.,The blood sugar level is high (250 mg/dL).
+49,X-ray reveals fracture in the distal radius bone.,The X-ray shows a broken wrist bone.
+50,ECG demonstrates ST-segment elevation suggestive of myocardial infarction.,The ECG shows signs of a heart attack.

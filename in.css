@@ -1,0 +1,51 @@
+/* style.css */
+body {
+    font-family: 'Roboto', sans-serif;
+    background: #fafafa;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: #fff;
+    border-bottom: 1px solid #dfdfdf;
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+}
+
+.nav-wrapper {
+    width: 70%;
+    max-width: 1000px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.brand-img {
+    height: 40px;
+}
+
+.search-box {
+    width: 200px;
+    padding: 5px;
+    border: 1px solid #dfdfdf;
+    border-radius: 3px;
+}
+
+.nav-items .icon {
+    height: 24px;
+    margin: 0 10px;
+    cursor: pointer;
+}
+
+.user-profile {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-image: url('img/profile-pic.png');
+    background-size: cover;
+}

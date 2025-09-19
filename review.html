@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
+    <title>MediAI - Your Smart Health Assistant</title>
+    <link rel="icon" href="./logo.png" type="image/x-icon" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <style>
+      ul{
+        gap:50px;
+        font-size: 15px;
+        margin-top: -10px;
+      }
+      .contain {
+        display: flex;
+        height: 80vh;
+        justify-content: space-around;
+        align-items: center;
+        color: #003366;
+        animation: expand .8s ease forwards;
+        background-color: #f4f9ff;
+        position: relative;
+        font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', sans-serif;
+        transition: all .8s ease;
+      }
+
+      .container_content {
+        width: 50%;
+      }
+
+      .container_content_inner {
+        width: 80%;
+        margin-left: 80px;
+      }
+
+      .container_outer_img {
+        margin: 100px;
+        width: 25%;
+        overflow: hidden;
+      }   
+    
+      .container_img {
+        width: 100%;
+        animation: slideIn 1.5s ease-in-out forwards;
+      }
+
+      .par {
+        height: auto;
+        overflow: hidden;
+      }
+
+      p{
+        line-height: 28px;
+        transform: translateY(300px);
+        animation: slideUp .8s ease-in-out forwards .8s;
+      }
+
+      .btns_more {
+        background: transparent;
+        border: 1px solid #003366;
+        border-radius: 50px;
+        padding: 8px 12px;
+        color: #0066cc;
+        font-size: 16px;
+        text-transform: uppercase;
+        position: relative;
+        margin-top: 15px;
+        outline: none;
+        transform: translateY(50px);
+        animation: slideUp .8s ease-in-out  forwards 1s;
+      }
+
+      h1 {
+        font-size: 40px;
+        color: #003366;
+        margin-bottom: 20px;
+        transform: translateY(100px);
+        animation: slideUp .8s ease forwards .5s;
+      }
+
+      @keyframes slideIn {
+        0% { transform: translateX(500px) scale(.2); }
+        100% { transform: translateX(0px) scale(1); }
+      }
+
+      @keyframes slideUp {
+        0% { transform: translateY(300px); }
+        100% { transform: translateY(0px); }
+      }
+
+      @keyframes expand {
+        0% { transform: translateX(1400px); }
+        100% { transform: translateX(0px); }
+      }
+    </style>
+  </head>
+  <body class="p-3 m-0 border-0 bd-example m-0 border-0">
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary shadow-sm">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#"><img src="Screenshot_2025-09-19_at_4.08.21_AM-removebg-preview.png" height="60" ></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item"><a class="nav-link active" href="http://127.0.0.1:5002/">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="review.html">Expert Review</a></li>
+            <li class="nav-item"><a class="nav-link" href="about.html">About us</a></li>
+            <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+       
+          </ul>
+         
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="contain">
+      <div class="container_content">
+        <div class="container_content_inner">
+          <div class="title">
+            <h1>AI-Powered Medical Assistant</h1>
+          </div>
+          <div class="par">
+            <p>
+              "Get instant, reliable medical insights powered by AI. 
+              From symptom checks to expert-reviewed health tips, 
+              MediAI supports you with personalized healthcare guidance."
+            </p>
+          </div>
+          <div class="btns">
+            <button class='btns_more'> Get Started </button>
+          </div>
+        </div>
+      </div>
+      <div class="container_outer_img">
+        <div class="img-inner">
+          <img src='./Subject.png' alt="AI Doctor Assistant" class="container_img"/>
+        </div>
+      </div>
+    </div>
+
+    <br><hr><br>
+
+    <!-- Expert Reviews -->
+    <div class="container">
+      <div class="row">
+        <!-- Expert 1 -->
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">Dr. Sarah Williams</h5>
+              <p class="card-text">"AI assistants are revolutionizing patient care by offering accurate and quick medical references."</p>
+            </div>
+          </div>
+        </div>
+        <!-- Expert 2 -->
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">Dr. John Doe</h5>
+              <p class="card-text">"These tools empower patients to take charge of their health while assisting doctors in diagnosis."</p>
+            </div>
+          </div>
+        </div>
+        <!-- Expert 3 -->
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">Dr. Emily Carter</h5>
+              <p class="card-text">"From preventive care to chronic condition management, AI is reshaping healthcare delivery."</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <br><hr><br>
+
+    <!-- Footer -->
+    <footer class="text-center text-lg-start text-black" style="background-color: #f8f9fa">
+      <div class="container p-4 pb-0">
+        <div class="row">
+          <!-- About -->
+          <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+            <h6 class="text-uppercase mb-4 font-weight-bold">
+              <img src="Screenshot_2025-09-19_at_4.08.21_AM-removebg-preview.png" height="60">
+            </h6>
+            <p>
+              MediAI is your trusted AI-powered medical assistant, 
+              providing instant, reliable healthcare insights with 
+              support from certified professionals.
+            </p>
+          </div>
+
+          <!-- Products -->
+          <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+            <h6 class="text-uppercase mb-4 font-weight-bold">Services</h6>
+            <p><a class="text-black">Symptom Checker</a></p>
+            <p><a class="text-black">AI Health Reports</a></p>
+            <p><a class="text-black">Doctor Connect</a></p>
+            <p><a class="text-black">Wellness Tips</a></p>
+          </div>
+
+          <!-- Links -->
+          <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
+            <h6 class="text-uppercase mb-4 font-weight-bold">Useful links</h6>
+            <p><a class="text-black">Your Account</a></p>
+            <p><a class="text-black">Help</a></p>
+            <p><a class="text-black">Privacy Policy</a></p>
+            <p><a class="text-black">Terms of Use</a></p>
+          </div>
+
+          <!-- Contact -->
+          <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+            <h6 class="text-uppercase mb-4 font-weight-bold">Contact</h6>
+            <p><i class="fas fa-home mr-3"></i> Bengaluru, India</p>
+            <p><i class="fas fa-envelope mr-3"></i> support@mediai.com</p>
+            <p><i class="fas fa-phone mr-3"></i> +91 9876543210</p>
+          </div>
+        </div>
+        <hr class="my-3">
+        <section class="p-3 pt-0">
+          <div class="row d-flex align-items-center">
+            <div class="col-md-7 col-lg-8 text-center text-md-start">
+              <div class="p-3">
+                © 2024 Copyright:
+                <a class="text-black" href="#">MediAI.com</a>
+              </div>
+            </div>
+            <div class="col-md-5 col-lg-4 ml-lg-0 text-center text-md-end">
+              <a class="btn btn-outline-primary btn-floating m-1" href="#"><i class="fab fa-facebook-f"></i></a>
+              <a class="btn btn-outline-primary btn-floating m-1" href="#"><i class="fab fa-twitter"></i></a>
+              <a class="btn btn-outline-primary btn-floating m-1" href="#"><i class="fab fa-linkedin"></i></a>
+              <a class="btn btn-outline-primary btn-floating m-1" href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
+        </section>
+      </div>
+    </footer>
+  </body>
+</html>

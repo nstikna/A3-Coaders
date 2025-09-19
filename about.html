@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
+    <title>AI Medical Assistant</title>
+    <link rel="icon" href="Screenshot_2025-09-19_at_4.08.21_AM-removebg-preview.png" type="image/x-icon" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+    <style>
+      ul {
+        gap: 50px;
+        font-size: 15px;
+        margin-top: -10px;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --primary-color: #4A90E2;   /* Light warm blue */
+        --contrast-color: #ffffff;
+      }
+
+      .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 100%;
+        z-index: -10;
+        background-color: var(--contrast-color);
+      }
+
+      .contain {
+        display: flex;
+        height: 80vh;
+        justify-content: space-around;
+        align-items: center;
+        color: #fff;
+        animation: expand .8s ease forwards;
+        background-color: var(--primary-color);
+        position: relative;
+        font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+        transition: all .8s ease;
+      }
+
+      .container_content { width: 50%; }
+      .container_content_inner { width: 80%; margin-left: 80px; }
+      .container_outer_img { margin: 50px; width: 50%; overflow: hidden; }
+      .container_img { width: 100%; animation: slideIn 1.5s ease-in-out forwards; }
+      .par { height: auto; overflow: hidden; }
+
+      p {
+        line-height: 28px;
+        transform: translateY(300px);
+        animation: slideUp .8s ease-in-out forwards .8s;
+      }
+
+      .btns { height: 100%; width: 150px; overflow: hidden; }
+      .btns_more {
+        background: transparent;
+        border: 1px solid var(--contrast-color);
+        border-radius: 50px;
+        padding: 8px 12px;
+        color: var(--contrast-color);
+        font-size: 16px;
+        text-transform: uppercase;
+        margin-top: 15px;
+        transform: translateY(50px);
+        animation: slideUp .8s ease-in-out forwards 1s;
+      }
+
+      .title { overflow: hidden; height: auto; }
+      h1 {
+        font-size: 40px;
+        color: var(--contrast-color);
+        margin-bottom: 20px;
+        transform: translateY(100px);
+        animation: slideUp .8s ease forwards .5s;
+      }
+
+      @keyframes slideIn { 0% { transform: translateX(500px) scale(.2);} 100% { transform: translateX(0px) scale(1);} }
+      @keyframes slideUp { 0% { transform: translateY(300px);} 100% { transform: translateY(0px);} }
+      @keyframes expand { 0% { transform: translateX(1400px);} 100% { transform: translateX(0px);} }
+    </style>
+  </head>
+  <body class="p-3 m-0 border-0 bd-example m-0 border-0">
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg" style="background-color: #f8fbff;">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#"><img src="Screenshot_2025-09-19_at_4.08.21_AM-removebg-preview.png" height="70"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" 
+                aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <li class="nav-item"><a class="nav-link active" href="http://127.0.0.1:5002/">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="review.html">Expert Review</a></li>
+            <li class="nav-item"><a class="nav-link" href="about.html">About us</a></li>
+            <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+       
+          </ul>
+          <form class="d-flex">
+            <input class="form-control me-2" type="search" placeholder="Search medical topics">
+            <button class="btn btn-outline-primary" type="submit">Search</button>
+          </form>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class='contain'>
+      <div class="container_content">
+        <div class="container_content_inner">
+          <div class="title"><h1>AI Medical Assistant</h1></div>
+          <div class="par">
+            <p>
+              Your personal AI-powered healthcare partner. Upload your medical reports and get easy-to-understand summaries, insights, and instant guidance. Our mission is to make healthcare information simple, reliable, and accessible for everyone.
+            </p>
+          </div>
+          <div class="btns"><button class='btns_more'>Try Now</button></div>
+        </div>
+      </div>
+      <div class="container_outer_img">
+        <div class="img-inner">
+          <img src="https://img.freepik.com/free-vector/ai-healthcare-technology_53876-119847.jpg" alt="AI Healthcare" class="container_img"/>
+        </div>
+      </div>
+    </div>
+    <div class="overlay"></div>
+
+    <!-- About Us Section -->
+    <div class="container mt-5">
+      <h1 class="text-center mb-4">About Us</h1>
+      <div class="row mb-5">
+        <div class="col-md-6">
+          <img src="https://img.freepik.com/free-vector/telemedicine-concept_23-2148504483.jpg" alt="AI in Healthcare" class="img-fluid rounded">
+        </div>
+        <div class="col-md-6">
+          <p style="font-size: larger;">Our AI Medical Assistant is designed to simplify complex medical jargon into easy-to-understand summaries. By combining advanced AI models with medical expertise, we help patients make informed health decisions.</p>
+          <p style="font-size: larger;">We believe in empowering patients with clarity, whether it's a diagnostic test, lab report, or health record.</p>
+        </div>
+      </div>
+    </div>
+
+    <br><hr><br>
+
+    <!-- Footer -->
+    <footer class="text-center text-lg-start text-black" style="background-color: #eaf3fc">
+      <div class="container p-4 pb-0">
+        <section>
+          <div class="row">
+            <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+              <h6 class="text-uppercase mb-4 font-weight-bold"><img src="Screenshot_2025-09-19_at_4.08.21_AM-removebg-preview.png" height="70"></h6>
+              <p>AI Medical Assistant helps simplify diagnostic reports and provide free AI-powered consultations for better health awareness.</p>
+            </div>
+            <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+              <h6 class="text-uppercase mb-4 font-weight-bold">Services</h6>
+              <p><a class="text-black">Report Simplification</a></p>
+              <p><a class="text-black">AI Health Chatbot</a></p>
+              <p><a class="text-black">Medical Insights</a></p>
+              <p><a class="text-black">Free Consultation</a></p>
+            </div>
+            <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
+              <h6 class="text-uppercase mb-4 font-weight-bold">Useful Links</h6>
+              <p><a class="text-black">Upload Report</a></p>
+              <p><a class="text-black">FAQs</a></p>
+              <p><a class="text-black">Help Center</a></p>
+              <p><a class="text-black">Contact Support</a></p>
+            </div>
+            <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+              <h6 class="text-uppercase mb-4 font-weight-bold">Contact</h6>
+              <p><i class="fas fa-home mr-3"></i> India, Karnataka, Dharwad-580004</p>
+              <p><i class="fas fa-envelope mr-3"></i> support@aimedical.com</p>
+              <p><i class="fas fa-phone mr-3"></i> +91 9876543210</p>
+            </div>
+          </div>
+        </section>
+        <hr class="my-3">
+        <section class="p-3 pt-0">
+          <div class="row d-flex align-items-center">
+            <div class="col-md-7 col-lg-8 text-center text-md-start">
+              <div class="p-3">© 2024 Copyright:
+                <a class="text-black" href="#">aimedicalassistant.com</a>
+              </div>
+            </div>
+            <div class="col-md-5 col-lg-4 ml-lg-0 text-center text-md-end">
+              <a class="btn btn-outline-primary btn-floating m-1" href="#"><i class="fab fa-facebook-f"></i></a>
+              <a class="btn btn-outline-primary btn-floating m-1" href="#"><i class="fab fa-twitter"></i></a>
+              <a class="btn btn-outline-primary btn-floating m-1" href="#"><i class="fab fa-linkedin"></i></a>
+              <a class="btn btn-outline-primary btn-floating m-1" href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
+        </section>
+      </div>
+    </footer>
+  </body>
+</html>

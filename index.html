@@ -1,0 +1,506 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>AI Medical Assistant</title>
+  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/2965/2965567.png" />
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <!-- Font Awesome for stethoscope -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet"/>
+
+  <style>
+    :root{
+      --primary: #4A90E2;   /* light warm blue */
+      --primary-dark: #0984e3;
+      --bg: #f1f9ff;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: 'Poppins', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: linear-gradient(180deg, #f7fbff 0%, #e9f3ff 100%);
+      -webkit-font-smoothing:antialiased;
+      padding-bottom: 120px;
+    }
+
+    /* Navbar */
+    .site-nav{
+      background: #f8fbff;
+      box-shadow: 0 4px 18px rgba(15,41,77,0.04);
+      position: sticky;
+      top:0;
+      z-index:50;
+    }
+    .logo-img{ height:56px; }
+
+    /* Chat card */
+    .chat-card{
+      width: 94%;
+      max-width: 1100px;
+      margin: 32px auto;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 18px 40px rgba(20,40,80,0.08);
+      background: #ffffff;
+    }
+    .chat-header{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      padding:20px 26px;
+      background: linear-gradient(135deg, #74b9ff, var(--primary-dark));
+      color:#fff;
+    }
+    .chat-header i{ font-size:28px; }
+    .chat-sub { margin-left:auto; font-size:13px; opacity:0.95; }
+
+    .chat-body{
+      display:flex;
+      flex-direction:column;
+      gap:0;
+    }
+
+    .chat-area{
+      padding:24px;
+      min-height: 320px;
+      max-height: 520px;
+      overflow:auto;
+      background: linear-gradient(180deg,#fbfeff 0%, #f7fbff 100%);
+    }
+
+    .bubble{
+      display:inline-block;
+      padding:14px 18px;
+      border-radius:14px;
+      margin:10px 0;
+      font-size:15px;
+      line-height:1.45;
+      max-width:78%;
+      word-break:break-word;
+      white-space:pre-wrap;
+    }
+    .bubble.user{
+      margin-left:auto;
+      background:#dfefff;
+      border-bottom-right-radius:6px;
+      box-shadow: 0 6px 18px rgba(13,56,110,0.03);
+    }
+    .bubble.bot{
+      background:#e8f8ff;
+      border:1px solid #cfe9ff;
+      border-bottom-left-radius:6px;
+      box-shadow: 0 6px 18px rgba(13,56,110,0.03);
+    }
+    .bubble.error{
+      background:#fff2f2;
+      border:1px solid #ffbcbc;
+      color:#b93838;
+    }
+    .response-list { margin:8px 0 8px 16px; padding-left:18px; }
+    .response-list li { margin-bottom:8px; }
+
+    .upload-row{
+      padding:18px 24px;
+      border-top:1px solid #f0f3f6;
+      background: #fff;
+      display:flex;
+      gap:16px;
+      align-items:center;
+      flex-wrap:wrap;
+    }
+    .file-label{ font-weight:600; color:#333; font-size:14px; min-width:210px; }
+
+    .input-row{
+      padding:18px;
+      border-top:1px solid #eef3f8;
+      background: #fff;
+      display:flex;
+      gap:12px;
+      align-items:center;
+    }
+    .text-input{
+      flex:1;
+      padding:12px 14px;
+      border-radius:14px;
+      border:1px solid #e3e9f2;
+      font-size:15px;
+    }
+    .btn-send{
+      background: var(--primary-dark);
+      color:#fff;
+      border: none;
+      padding:10px 18px;
+      border-radius:12px;
+      font-weight:600;
+      box-shadow: 0 8px 20px rgba(9,132,227,0.12);
+    }
+    .btn-reset{
+      background:#f6f8fb;
+      border:1px solid #e3e9f2;
+      color:#2b4b6e;
+      padding:8px 12px;
+      border-radius:10px;
+    }
+    .small-note{ font-size:13px; color:#536b86; }
+
+    /* spinner overlay */
+    .spinner-overlay{
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items:center;
+      justify-content:center;
+      background: rgba(255,255,255,0.6);
+      z-index: 60;
+    }
+
+    /* footer */
+    footer {
+      background: #eaf3fc;
+      padding: 36px 16px;
+      margin-top: 36px;
+      border-top-left-radius: 18px;
+      border-top-right-radius: 18px;
+    }
+    footer .row { align-items: start; }
+    footer a { color: #0b4f8a; text-decoration:none; }
+    footer .social-icons a { margin-right:12px; color:#0984e3; font-size:20px; }
+    footer .social-icons a:hover{ color: #0652dd; }
+
+    /* responsive */
+    @media (max-width:720px){
+      .chat-card{ width:96%; margin:16px auto; }
+      .bubble{ max-width:92% }
+      .container-fluid .navbar .navbar-brand img{ height:44px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar site-nav navbar-expand-lg">
+    <div class="container-fluid">
+      <a class="navbar-brand d-flex align-items-center gap-2" href="#">
+        <i class="fa-solid fa-stethoscope" style="font-size:28px;color:var(--primary)"></i>
+        <span style="font-weight:700;color:#163a63;font-size:18px">AI Medical Assistant</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto gap-3">
+          <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="review.html">Expert Review</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Chat card -->
+  <div class="chat-card position-relative">
+
+    <div class="chat-header">
+      <i class="fa-solid fa-stethoscope"></i>
+      <div style="font-size:18px;font-weight:700">AI Medical Assistant</div>
+      <div class="chat-sub">Patient-friendly report simplifier</div>
+    </div>
+
+    <div class="chat-body">
+      <!-- conversation area -->
+      <div id="chatArea" class="chat-area" aria-live="polite"></div>
+
+      <!-- upload row -->
+      <div class="upload-row">
+        <div style="display:flex;flex-direction:column;gap:8px;flex:1;min-width:220px">
+          <div class="file-label">Upload medical document (PDF / JPG / PNG)</div>
+          <input id="fileInput" type="file" accept=".pdf,.jpg,.jpeg,.png" class="form-control" />
+          <div id="fileName" class="small-note"></div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:12px;align-items:flex-end">
+          <div class="small-note">Session: <span id="sessionBadge" style="font-weight:700">—</span></div>
+          <button id="resetBtn" class="btn-reset">Reset Conversation</button>
+        </div>
+      </div>
+
+      <!-- input row -->
+      <div class="input-row">
+        <input id="textInput" class="text-input" type="text" placeholder="Type medical text or question (e.g. 'What does it mean?')"/>
+        <button id="sendBtn" class="btn-send"><i class="fa-solid fa-paper-plane me-2"></i>Send</button>
+      </div>
+    </div>
+
+    <!-- spinner overlay (hidden by default) -->
+    <div id="spinner" class="spinner-overlay" style="display:none">
+      <div class="text-center">
+        <div class="spinner-border text-primary" role="status" style="width:44px;height:44px"></div>
+        <div style="margin-top:8px;color:#0b4f8a;font-weight:600">Working…</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row gy-3">
+        <div class="col-lg-4">
+          <h6 style="font-weight:700">AI Medical Assistant</h6>
+          <p>We simplify diagnostic reports and provide AI-assisted explanations and guidance to help patients understand their results quickly. Upload a report or ask a question to begin.</p>
+        </div>
+
+        <div class="col-lg-2">
+          <h6 style="font-weight:700">Services</h6>
+          <p><a href="#">Report Simplification</a></p>
+          <p><a href="#">AI Health Chatbot</a></p>
+          <p><a href="#">Medical Insights</a></p>
+        </div>
+
+        <div class="col-lg-3">
+          <h6 style="font-weight:700">Useful Links</h6>
+          <p><a href="#">Upload Report</a></p>
+          <p><a href="#">Help / FAQs</a></p>
+          <p><a href="#">Privacy</a></p>
+        </div>
+
+        <div class="col-lg-3">
+          <h6 style="font-weight:700">Contact</h6>
+          <p>India, Karnataka, Dharwad</p>
+          <p>support@aimedical.com</p>
+          <div class="social-icons d-flex mt-2">
+            <a href="#" aria-label="facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="linkedin"><i class="fab fa-linkedin"></i></a>
+            <a href="#" aria-label="instagram"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <hr style="margin-top:18px;border-color:#dfeefc"/>
+      <div class="text-center small">© 2024 aimedicalassistant.com</div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    const API = "http://127.0.0.1:5002/simplify";
+    const RESET_API = "http://127.0.0.1:5002/reset";
+
+    const chatArea = document.getElementById("chatArea");
+    const textInput = document.getElementById("textInput");
+    const fileInput = document.getElementById("fileInput");
+    const sendBtn = document.getElementById("sendBtn");
+    const resetBtn = document.getElementById("resetBtn");
+    const spinner = document.getElementById("spinner");
+    const fileNameEl = document.getElementById("fileName");
+    const sessionBadge = document.getElementById("sessionBadge");
+
+    // session id persisted locally
+    let sessionId = localStorage.getItem("session_id") || null;
+    sessionBadge.textContent = sessionId ? sessionId.slice(0,8) : "—";
+
+    // small helper to append messages
+    function appendBubble(text, who="bot", isError=false){
+      const wrapper = document.createElement("div");
+      wrapper.className = "bubble " + (who === "user" ? "user" : (isError ? "error" : "bot"));
+
+      // If the response contains explicit bullets (leading • or lines), render a list
+      const trimmed = (text || "").trim();
+      const hasBullets = trimmed.split("\\n").some(line => line.trim().startsWith("•"));
+      const newlineCount = (trimmed.match(/\\n/g) || []).length;
+
+      if (hasBullets || newlineCount > 2) {
+        // try to split into sensible items
+        const items = [];
+        // first split on new lines, then on '•'
+        trimmed.split(/\\r?\\n/).forEach(line => {
+          line = line.trim();
+          if (!line) return;
+          if (line.startsWith("•")) items.push(line.replace(/^•+\\s*/, ""));
+          else {
+            // split on ' • ' or ' . ' if long
+            line.split(/\\s•\\s/).forEach(p=>{
+              p = p.trim();
+              if (p) items.push(p.replace(/^[\\s\\-\\d\\.]+/, '').trim());
+            });
+          }
+        });
+
+        // if we still have only one long chunk, try splitting on sentence end ('. ')
+        if (items.length <= 1 && trimmed.length > 160) {
+          trimmed.split(/\\.\\s+/).forEach(s=>{
+            s = s.trim();
+            if (s) items.push(s);
+          });
+        }
+
+        if (items.length > 1) {
+          const ul = document.createElement("ul");
+          ul.className = "response-list";
+          items.forEach(it => {
+            const li = document.createElement("li");
+            li.textContent = it;
+            ul.appendChild(li);
+          });
+          wrapper.appendChild(ul);
+        } else {
+          // fallback: show full text as preformatted
+          wrapper.textContent = trimmed;
+        }
+      } else {
+        wrapper.textContent = trimmed;
+      }
+
+      chatArea.appendChild(wrapper);
+      chatArea.scrollTop = chatArea.scrollHeight;
+    }
+
+    function appendMeta(text){
+      const el = document.createElement("div");
+      el.className = "small-note";
+      el.style.margin = "8px 0 14px";
+      el.textContent = text;
+      chatArea.appendChild(el);
+      chatArea.scrollTop = chatArea.scrollHeight;
+    }
+
+    // show filename when selected
+    fileInput.addEventListener("change", () => {
+      const f = fileInput.files[0];
+      if (f) {
+        fileNameEl.textContent = `Selected: ${f.name}`;
+      } else {
+        fileNameEl.textContent = "";
+      }
+    });
+
+    async function sendData(){
+      const file = fileInput.files[0];
+      const text = textInput.value.trim();
+
+      if (!file && !text) {
+        appendMeta("⚠️ Please enter text or upload a file.");
+        return;
+      }
+
+      // show user bubble
+      if (text) appendBubble(text, "user");
+      else appendBubble(`[Uploaded file: ${file.name}]`, "user");
+
+      spinner.style.display = "flex";
+      sendBtn.disabled = true;
+      resetBtn.disabled = true;
+
+      try {
+        let res;
+        if (file) {
+          const fd = new FormData();
+          fd.append("file", file);
+          fd.append("session_id", sessionId || "");
+          // optional text query along with file
+          const userQuery = text || "Please summarize and simplify this report for the patient.";
+          fd.append("text", userQuery);
+          res = await fetch(API, { method: "POST", body: fd });
+        } else {
+          const body = { text: text, session_id: sessionId || "" };
+          res = await fetch(API, {
+            method: "POST",
+            headers: {"Content-Type":"application/json"},
+            body: JSON.stringify(body)
+          });
+        }
+
+        // handle non-2xx status
+        if (!res.ok) {
+          // try parse JSON with error field
+          let errMsg = `Server returned ${res.status}`;
+          try {
+            const j = await res.json();
+            if (j && j.error) errMsg = j.error;
+          } catch(e){
+            // keep generic
+          }
+          appendBubble(`⚠️ Error: ${errMsg}`, "bot", true);
+          appendMeta("Upload medical document (PDF/JPG/PNG):");
+          return;
+        }
+
+        const data = await res.json();
+        // save session id if returned
+        if (data.session_id) {
+          sessionId = data.session_id;
+          localStorage.setItem("session_id", sessionId);
+          sessionBadge.textContent = sessionId.slice(0,8);
+        }
+
+        if (data.simplified_text) {
+          appendBubble(data.simplified_text, "bot");
+        } else if (data.error) {
+          appendBubble(`⚠️ Error: ${data.error}`, "bot", true);
+          appendMeta("Upload medical document (PDF/JPG/PNG):");
+        } else {
+          appendBubble("⚠️ No simplification returned.", "bot", true);
+        }
+
+      } catch (err) {
+        appendBubble("⚠️ Error: " + err.message, "bot", true);
+        appendMeta("Upload medical document (PDF/JPG/PNG):");
+      } finally {
+        spinner.style.display = "none";
+        sendBtn.disabled = false;
+        resetBtn.disabled = false;
+        textInput.value = "";
+        fileInput.value = "";
+        fileNameEl.textContent = "";
+      }
+    }
+
+    // reset conversation
+    async function resetConversation(){
+      if (!sessionId){
+        chatArea.innerHTML = ""; // clear UI
+        appendMeta("Session cleared.");
+        localStorage.removeItem("session_id");
+        sessionBadge.textContent = "—";
+        return;
+      }
+      try {
+        const res = await fetch(RESET_API, {
+          method: "POST",
+          headers: {"Content-Type":"application/json"},
+          body: JSON.stringify({ session_id: sessionId })
+        });
+        const j = await res.json();
+        if (j.status && j.status === "reset") {
+          chatArea.innerHTML = "";
+          appendMeta("Conversation reset.");
+          localStorage.removeItem("session_id");
+          sessionId = null;
+          sessionBadge.textContent = "—";
+        } else {
+          appendMeta("No session to reset.");
+        }
+      } catch (err) {
+        appendMeta("Reset failed: " + err.message);
+      }
+    }
+
+    // events
+    sendBtn.addEventListener("click", sendData);
+    resetBtn.addEventListener("click", resetConversation);
+    textInput.addEventListener("keydown", (e)=>{ if (e.key === "Enter") sendData(); });
+
+    // welcome message
+    appendBubble("Welcome — upload a medical report or paste the text. Ask follow-ups like 'What does it mean?' and I will use prior report context to answer.", "bot");
+  </script>
+</body>
+</html>
